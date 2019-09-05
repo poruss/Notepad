@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/settingMenu"
+        android:title="Setting" />
+    <item
+        android:id="@+id/profileMenu"
+        android:title="Profile" />
+    <item
+        android:id="@+id/logoutMenu"
+        android:title="Logout" />
+    <item
+        android:id="@+id/searchMenu"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
+    <item
+        android:icon="@drawable/add_note_ic"
+        android:id="@+id/addNewMenu"
+        android:title="Add"
+        app:showAsAction="always"/>
+
+</menu>
