@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.NotesDetailActivity"
+    android:orientation="vertical"
+    android:background="#ffffffff">
+
+    <include  layout="@layout/toolbar_layout"/>
+
+   <LinearLayout
+      android:padding="20dp"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <TextView
+           android:id="@+id/detailNotesTitle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="This is notes title"
+           android:padding="10dp"
+           android:textSize="25sp"/>
+       <View
+           android:background="@color/colorPrimary"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"/>
+       <TextView
+           android:id="@+id/detailNotesMessage"
+           android:padding="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="This is notes message"
+           android:textSize="18sp"/>
+   </LinearLayout>
+
+</LinearLayout>

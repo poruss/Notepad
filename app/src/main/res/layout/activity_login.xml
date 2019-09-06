@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.LoginActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorLoginSignupBackground">
     <LinearLayout
         android:layout_below="@+id/logoImage"
         android:layout_marginTop="50dp"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Username"
                 android:inputType="text"
-                android:backgroundTint="@color/colorHint"/>
+                android:backgroundTint="@color/colorPrimary"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:backgroundTint="@color/colorHint"/>
+                android:backgroundTint="@color/colorPrimary"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

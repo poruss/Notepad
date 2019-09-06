@@ -1,6 +1,7 @@
 package com.example.notepad.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.app.ProgressDialog;
@@ -41,6 +42,11 @@ public class AddnotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addnotes);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle("Add Notes");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         initializeUi();
     }
 
@@ -67,7 +73,7 @@ public class AddnotesActivity extends AppCompatActivity {
 
     private void saveNotesToDatabase(final String notestTitle, final String notestMessage, final String userId) {
         progressDialog = new ProgressDialog(AddnotesActivity.this);
-        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setMessage("Adding..."); // Setting Message
         progressDialog.setTitle("Add Notes"); // Setting Title
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
         progressDialog.show(); // Display Progress Dialog
@@ -75,13 +81,15 @@ public class AddnotesActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.saveNotesApi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String status = jsonObject.getString("status");
                     if (status.equals("1")){
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(),"Noted Added",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AddnotesActivity.this,MainActivity.class));
+                        startActivity(new Intent(AddnotesActivity.this,HomeActivity.class));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

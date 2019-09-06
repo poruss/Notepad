@@ -3,6 +3,7 @@ package com.example.notepad.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText etUsername;
     private TextInputEditText etPassword;
     private CoordinatorLayout rootLayout;
+    ProgressDialog progressDoalog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         initializeUi();
-
     }
-
-
 
     private void initializeUi() {
 
@@ -77,6 +76,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validateLogin(final String username, final String password) {
+        progressDoalog = new ProgressDialog(LoginActivity.this);
+        progressDoalog.setMax(100);
+        progressDoalog.setMessage("Please wait....");
+        progressDoalog.setTitle("Authnticating");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.loginApi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -91,11 +96,11 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         Snackbar.make(rootLayout,"Invalid username or password",Snackbar.LENGTH_LONG).show();
                     }
+                    progressDoalog.dismiss();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -121,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startHomeActivity() {
-        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
         finish();
     }
 }

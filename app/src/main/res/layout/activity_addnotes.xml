@@ -7,16 +7,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.AddnotesActivity"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:layout_gravity="bottom">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
+        <include  layout="@layout/toolbar_layout"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNotesTitle"
                 android:layout_width="match_parent"
@@ -28,7 +32,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNotesMessage"
                 android:layout_width="match_parent"
@@ -46,7 +51,9 @@
             android:textColor="#ffffff"
             android:background="@color/colorPrimary"
             android:layout_marginTop="50dp"
-            android:onClick="saveMyNotes"/>
+            android:onClick="saveMyNotes"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
     </LinearLayout>
 

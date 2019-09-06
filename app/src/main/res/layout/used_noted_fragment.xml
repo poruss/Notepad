@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+    android:id="@+id/rootLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity"
-    android:background="#ffffff">
-
-    <include  layout="@layout/toolbar_layout"/>
-
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerView"
@@ -19,5 +13,4 @@
         android:scrollbars="vertical">
     </androidx.recyclerview.widget.RecyclerView>
 
-
-</LinearLayout>
+</RelativeLayout>
