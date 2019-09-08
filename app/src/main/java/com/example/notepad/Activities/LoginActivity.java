@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText etPassword;
     private CoordinatorLayout rootLayout;
     ProgressDialog progressDoalog;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = (TextInputEditText)findViewById(R.id.etUsername);
         etPassword = (TextInputEditText)findViewById(R.id.etPassword);
         rootLayout = (CoordinatorLayout)findViewById(R.id.rootLayout);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
     }
 
     public void makeUserLogin(View view) {
@@ -76,15 +79,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validateLogin(final String username, final String password) {
-        progressDoalog = new ProgressDialog(LoginActivity.this);
+       /* progressDoalog = new ProgressDialog(LoginActivity.this);
         progressDoalog.setMax(100);
         progressDoalog.setMessage("Please wait....");
         progressDoalog.setTitle("Authnticating");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDoalog.show();
+        progressDoalog.show();*/
+        progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.loginApi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressBar.setVisibility(View.GONE);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String status = jsonObject.getString("status");
@@ -96,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         Snackbar.make(rootLayout,"Invalid username or password",Snackbar.LENGTH_LONG).show();
                     }
-                    progressDoalog.dismiss();
+                   // progressDoalog.dismiss();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

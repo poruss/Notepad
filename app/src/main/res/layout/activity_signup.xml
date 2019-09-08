@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.LoginActivity"
-    android:background="@color/colorLoginSignupBackground">
+    android:background="#ffffffff">
     <LinearLayout
         android:layout_below="@+id/logoImage"
         android:layout_marginTop="50dp"
@@ -21,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/notepad_logo"
-            android:layout_marginTop="70dp"
             android:layout_gravity="center"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -33,8 +32,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Name"
                 android:inputType="text"
-                android:backgroundTint="@color/colorHint"/>
+                android:backgroundTint="@color/colorPrimary"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -44,8 +45,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Username"
                 android:inputType="text"
-                android:backgroundTint="@color/colorHint"/>
+                android:backgroundTint="@color/colorPrimary"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -55,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:backgroundTint="@color/colorHint"/>
+                android:backgroundTint="@color/colorPrimary"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -71,10 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Or"
+            android:textSize="18sp"
             android:gravity="center"
             android:layout_marginTop="15dp"
-            android:textColor="@color/colorLoginLabel"/>
-
+            android:textColor="#645A5A"/>
         <TextView
             android:id="@+id/loginTextMessage"
             android:layout_width="match_parent"
@@ -82,13 +85,14 @@
             android:text="Already have account?Login"
             android:gravity="center"
             android:layout_marginTop="15dp"
-            android:textColor="@color/colorLoginLabel" />
+            android:textSize="18sp"
+            android:textColor="#645A5A" />
 
         <ProgressBar
             android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:visibility="gone" />
     </LinearLayout>

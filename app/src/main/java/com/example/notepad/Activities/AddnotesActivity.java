@@ -81,7 +81,7 @@ public class AddnotesActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.saveNotesApi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -90,6 +90,7 @@ public class AddnotesActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(),"Noted Added",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(AddnotesActivity.this,HomeActivity.class));
+                        finish();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
