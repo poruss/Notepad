@@ -1,5 +1,6 @@
 package com.example.notepad.Common;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.notepad.Activities.AddnotesActivity;
 import com.example.notepad.Adapters.NotesListAdapter;
 import com.example.notepad.Adapters.UnusedNotesListAdapters;
 import com.example.notepad.Constants.Constants;
@@ -29,15 +31,24 @@ public class CommonVollyRequest {
 
     Context context;
     RecyclerView recyclerView;
+    ProgressDialog progressDialog;
+
     public CommonVollyRequest(Context context, RecyclerView recyclerView){
         this.context = context;
         this.recyclerView = recyclerView;
     }
 
     public void getMyAllNotesUsed(final String userId, final String status, final NotesListAdapter notesListAdapter, final List<NotesModel> notesList) {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Loading Notes"); // Setting Title
+        progressDialog.setMessage("Please Wait..."); // Setting Message
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
         StringRequest request = new StringRequest(Request.Method.POST, Constants.myNotesApi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressDialog.dismiss();
                 //Toast.makeText(context,response,Toast.LENGTH_SHORT).show();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -81,9 +92,16 @@ public class CommonVollyRequest {
 
 
     public void getMyAllNotesUnUsed(final String userId, final String unused, final UnusedNotesListAdapters unusedNotesListAdapters, final List<NotesModel> unusedNotesList) {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Loading Notes"); // Setting Title
+        progressDialog.setMessage("Please Wait..."); // Setting Message
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
         StringRequest request = new StringRequest(Request.Method.POST, Constants.myNotesApi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressDialog.dismiss();
                 // Toast.makeText(context,response,Toast.LENGTH_SHORT).show();
                 try {
                     JSONObject jsonObject = new JSONObject(response);

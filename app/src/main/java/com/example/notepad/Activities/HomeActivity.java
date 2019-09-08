@@ -87,6 +87,9 @@ public class HomeActivity extends AppCompatActivity {
                 sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.logoutUser();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                // now clear all activites so that app can be closed !
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
